@@ -1,9 +1,8 @@
-// src/theme.tsx
-import { createTheme } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   typography: {
-    fontFamily: 'Montserrat',
+    fontFamily: 'Montserrat, sans-serif',
     subtitle1: {
       fontSize: 16,
       fontWeight: 600,
@@ -31,6 +30,9 @@ const theme = createTheme({
     text: {
       primary: '#373C38',
       secondary: '#656E66',
+      high: '#373C38', // High emphasis color
+      medium: '#656E66', // Medium emphasis color
+      low: '#94A196', // Low emphasis color
     },
     background: {
       paper: '#FFFFFF',

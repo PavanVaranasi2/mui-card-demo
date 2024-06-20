@@ -1,32 +1,74 @@
 // src/components/organisms/JobCard.tsx
 import React from 'react';
-import { Box, Typography, Card, CardContent, useTheme } from '@mui/material';
-import IconEle from '../../atoms/IconEle';
+import { Box, Typography, Card, CardContent, styled, useTheme } from '@mui/material';
+import Icon from '../../atoms/Icon';
 import CommuteRoutes from '../../molecules/CommuteRoutes';
+
+const StyledCard = styled(Card)(({ theme }) => ({
+  maxWidth: 320,
+  height: 271,
+  padding: theme.spacing(1, 0),
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: theme.palette.background.paper,
+  margin: theme.spacing(30),
+}));
+
+const HeaderBox = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  gap: theme.spacing(3),
+  opacity: 1,
+  marginBottom: theme.spacing(4),
+}));
+
+const IconBox = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(0.5, 0, 0, 0),
+  gap: theme.spacing(1.25),
+}));
+
+const TripleDotBox = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(1.25, 0.5),
+  gap: theme.spacing(0.625),
+}));
+
+const ContentBox = styled(Box)(({ theme }) => ({
+  textAlign: 'left',
+  lineHeight: '22px',
+  marginBottom: theme.spacing(4),
+}));
+
+const FooterBox = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+}));
+
+const InfoBox = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+}));
+
+const TimeBox = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'flex-end',
+}));
 
 const JobCard: React.FC = () => {
   const theme = useTheme();
 
   return (
-    <Card sx={{ 
-        maxWidth: 320, 
-        height: 271, 
-        padding: theme.spacing(2, 0), 
-        borderRadius: '12px', 
-        backgroundColor: theme.palette.background.paper, 
-        margin: theme.spacing(1.25),
-    }}>
+    <StyledCard>
       <CardContent>
-        <Box display="flex" justifyContent="space-between" sx={{ gap: theme.spacing(3), opacity: 1, marginBottom: theme.spacing(4) }}>
-          <Box sx={{ padding: theme.spacing(0.5, 0, 0, 0), gap: theme.spacing(1.25) }}>
-            <IconEle src="./hp icon.png" alt="Hp icon" width='45px' height='45px' />
-          </Box>
-          <Box sx={{ padding: theme.spacing(1.25, 0.5), gap: theme.spacing(0.625) }}>
-            <IconEle src="./triple dot icon.png" alt="Triple dot" width='24px' height='24px' />
-          </Box>
-        </Box>
+        <HeaderBox>
+          <IconBox>
+            <Icon src="./assets/icons/hp icon.svg" alt="Hp icon" width="45px" height="45px" />
+          </IconBox>
+          <TripleDotBox>
+            <Icon src="./assets/icons/triple dot icon.svg" alt="Triple dot" width="24px" height="24px" />
+          </TripleDotBox>
+        </HeaderBox>
 
-        <Box sx={{ textAlign: 'left', marginBottom: theme.spacing(4) }}>
+        <ContentBox>
           <Typography variant="subtitle1">
             User Experience Designer
           </Typography>
@@ -37,23 +79,23 @@ const JobCard: React.FC = () => {
           <Typography variant="caption">
             Hyderabad, Telangana, India
           </Typography>
-        </Box>
+        </ContentBox>
 
-        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <Typography variant='caption' sx={{ color: theme.palette.text.primary, marginBottom: theme.spacing(1), textAlign: 'left', width: '170px' }}>
+        <FooterBox>
+          <InfoBox>
+            <Typography variant="caption" sx={{ color: theme.palette.text.high, marginBottom: theme.spacing(1.2) }}>
               Commute routes available:
             </Typography>
             <CommuteRoutes />
-          </Box>
-          <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-            <Typography variant="caption" sx={{ width: '95px', height: '16px', textAlign: 'right' }}>
+          </InfoBox>
+          <TimeBox>
+            <Typography variant="caption" sx={{ color: theme.palette.text.high }}>
               1hr 36 mins ago
             </Typography>
-          </Box>
-        </Box>
+          </TimeBox>
+        </FooterBox>
       </CardContent>
-    </Card>
+    </StyledCard>
   );
 };
 
