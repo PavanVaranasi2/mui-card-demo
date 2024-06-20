@@ -11,7 +11,7 @@ const JobCard: React.FC = () => {
     <Card sx={{ 
         maxWidth: 320, 
         height: 271, 
-        padding: theme.spacing(2, 2.5), 
+        padding: theme.spacing(2, 0), 
         borderRadius: '12px', 
         backgroundColor: theme.palette.background.paper, 
         margin: theme.spacing(1.25),
